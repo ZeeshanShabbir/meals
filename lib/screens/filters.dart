@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key});
+  const FiltersScreen({super.key, required this.currentFilters});
+
+  final Map<Filter, bool> currentFilters;
 
   @override
   State<StatefulWidget> createState() {
@@ -18,12 +20,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
   var _vegenFliterSet = false;
 
   @override
+  void initState() {
+    super.initState();
+    _glutenFreeFliterSet = widget.currentFilters[Filter.glutenFree]!;
+    _lactoseFreeFliterSet = widget.currentFilters[Filter.lactoseFree]!;
+    _vegetrainFliterSet = widget.currentFilters[Filter.vegetarian]!;
+    _vegenFliterSet = widget.currentFilters[Filter.vegan]!;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Your Filters')),
       body: PopScope(
         canPop: false,
         onPopInvokedWithResult: (bool didPop, dynamic result) {
+          if (didPop) return;
           Navigator.of(context).pop({
             Filter.glutenFree: _glutenFreeFliterSet,
             Filter.lactoseFree: _lactoseFreeFliterSet,
