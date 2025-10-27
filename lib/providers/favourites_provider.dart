@@ -13,6 +13,8 @@ class FavouriteMealNotifier extends Notifier<List<Meal>> {
       return false;
     } else {
       state = [...state, meal];
+      //Address zeeshan's comment
+      print(state);
       return true;
     }
   }
