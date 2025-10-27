@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals/screens/tabsV2.dart';
+import 'package:meals/screens/tabs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final theme = ThemeData(
